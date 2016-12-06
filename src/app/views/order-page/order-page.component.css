@@ -1,0 +1,17 @@
+.order-page .pagetitle {
+    text-transform: uppercase;
+    letter-spacing: 2px;
+    font-size: 1.8rem;
+    font-weight: 300;
+    text-align: center;
+    padding: .25rem 0 2rem 0;
+    font-family: 'Lato', sans-serif;
+}
+.order-page.disabled {
+    display: none;
+}
+.order-page .order {
+    display: block;
+    margin: 1rem auto;
+    max-width: 25rem;
+}

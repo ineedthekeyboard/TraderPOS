@@ -1,0 +1,8 @@
+<div class="application container-fluid order-summary">
+  <div class="pagetitle">
+    {{pagetitle}}
+  </div>
+  <app-product-search (productSelected)='onProductSelected($event)'></app-product-search>
+  <button (click)="goBack()" type="button" class="btn btn-default btn-lg btn-block order">Back</button>
+  <app-order-table [summaryMode]=true [products]='productsOrdered'></app-order-table>
+</div>

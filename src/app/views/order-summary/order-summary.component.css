@@ -1,0 +1,10 @@
+.order-summary.disabled {
+    display: none;
+}
+
+.order-summary {}
+.order-summary .order {
+  display: block;
+  margin: 1rem auto;
+  max-width: 25rem;
+}
