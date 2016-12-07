@@ -17,10 +17,26 @@ import { OrdersService } from './services/orders.service';
 import { AppRoutingModule } from './app.router';
 import { ProductSearchComponent } from './views/product-search/product-search.component';
 import { OrderTableComponent } from './views/order-table/order-table.component';
+import { AngularFireModule, AuthProviders, AuthMethods } from 'angularfire2';
+
+export const myFirebaseConfig = {
+  apiKey: "AIzaSyAtYkq4VFsHKZBo_XmEUuU_hSF77_um6wk",
+  authDomain: "muzirisspicetrade.firebaseapp.com",
+  databaseURL: "https://muzirisspicetrade.firebaseio.com",
+  storageBucket: "muzirisspicetrade.appspot.com",
+  messagingSenderId: "926947141541"
+};
+
+export const myFirebaseAuthConfig = {
+  provider: AuthProviders.Password,
+  method: AuthMethods.Password
+};
+
 
 @NgModule({
   imports: [
     BrowserModule,
+    AngularFireModule.initializeApp(myFirebaseConfig, myFirebaseAuthConfig),
     FormsModule,
     HttpModule,
     InMemoryWebApiModule.forRoot(InMemoryDataService),
