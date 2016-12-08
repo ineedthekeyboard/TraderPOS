@@ -1,6 +1,9 @@
 import {Component, OnInit, Output, EventEmitter} from '@angular/core';
 import {ProductsService} from '../../services/products.service';
 import {Product} from '../../models/product-model/product.model';
+import {AngularFire, FirebaseListObservable} from 'angularfire2';
+//import "rxjs/rx";
+import {Observable} from "rxjs";
 
 @Component({
   selector: 'app-product-search',
@@ -8,8 +11,8 @@ import {Product} from '../../models/product-model/product.model';
   styleUrls: ['product-search.component.css']
 })
 export class ProductSearchComponent implements OnInit {
-  products: Product[];
-  allProducts: Product[];
+  products: Observable<Product[]> = Observable.from([]);
+  allProducts: FirebaseListObservable<Product[]>;
   searchTerm: string;
   searchBoxValue: string = '';
 
@@ -19,10 +22,8 @@ export class ProductSearchComponent implements OnInit {
   }
 
   ngOnInit() {
-    // Moved to the service to on init::
-    this.productsService.getProducts().then((products) => {
-      this.allProducts = products;
-    });
+    //Gets an observable from angularfire
+    this.allProducts = this.productsService.getProducts();
   }
 
   addProduct(product: Product): void {
@@ -32,42 +33,28 @@ export class ProductSearchComponent implements OnInit {
   }
 
   enterPressedAddProduct(): void {
-    let productsFilteredByName: Product[] = this.allProducts.filter(p => p.name.indexOf(this.searchTerm) > -1);
-    if (productsFilteredByName.length > 0) {
-      this.productSelected.emit(productsFilteredByName[0]);
-    }
+    //Only allow the first found product to be emitted.
+    let emittedValue: boolean = false;
+    //get the values from the observable
+    this.allProducts.subscribe((products) => {
+      let productsFiltered = products.filter(p => p.name.indexOf(this.searchTerm) > -1);
+      if (productsFiltered.length > 0 && !emittedValue) {
+        emittedValue = true;
+        this.productSelected.emit(productsFiltered[0]);
+      }
+    });
   }
 
   search(): void {
     let term = this.searchBoxValue;
-    let searchForTerm = () => {
-      // clearly this code is really bad for production, devise a service to handle search later
-      this.products = this.allProducts.filter(p => p.name.indexOf(this.searchTerm) > -1);
-    };
+    this.products = this.allProducts.debounceTime(300).map(products => {
+      return products.filter(p => p.name.indexOf(this.searchTerm) > -1)
+    });
     this.searchTerm = term;
     if (this.searchTerm === '' || !this.searchTerm) {
-      this.products = [];
+      this.products = Observable.from([]); //Create Empty Observable
       return;
     }
-    this.debounce(searchForTerm(), 350, null);
   }
 
-  debounce(func, wait, immediate) {
-    let timeout;
-    return function () {
-      let context = this, args = arguments;
-      let later = function () {
-        timeout = null;
-        if (!immediate) {
-          func.apply(context, args);
-        }
-      };
-      let callNow = immediate && !timeout;
-      clearTimeout(timeout);
-      timeout = setTimeout(later, wait);
-      if (callNow) {
-        func.apply(context, args);
-      }
-    };
-  }
 }

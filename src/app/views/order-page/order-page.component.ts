@@ -32,6 +32,7 @@ export class OrderPageComponent implements OnInit {
   }
 
   onProductSelected(product: Product) {
+    debugger;
     // TODO: Check that the product is not already added.
     product.number = 1; // Make only one added now
     let newOrder = new Order(product);

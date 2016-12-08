@@ -16,6 +16,10 @@ export class ProductsService {
   constructor(private http: Http,
               af: AngularFire) {
     this.products = af.database.list('/products');
+    this.products.subscribe((p)=>{
+      console.log("products now:");
+      console.log(p);
+    })
   }
 
   // create(product: Product): Promise<Product> {
@@ -27,13 +31,31 @@ export class ProductsService {
   //     .catch(this.handleError);
   // }
 
-  getProducts(): Promise<Product[]> {
+  getProducts(): FirebaseListObservable<Product[]> {
+    return this.products;
     //return a promise that subscribes to the observable
-    return new Promise((res, rej) => {
-      this.products.subscribe((products)=>{
-        res(products);
-      });
-    }).catch(this.handleError);
+    // return new Promise((res, rej) => {
+    //   try {
+    //     this.products.subscribe((products)=>{
+    //       res(products);
+    //     });
+    //   } catch (err){
+    //     rej(err)
+    //   }
+    // }).catch(this.handleError);
+  }
+
+  create(newName: string) {
+    this.products.push({ text: newName });
+  }
+  update(key: string, newText: string) {
+    this.products.update(key, { text: newText });
+  }
+  delete(key: string) {
+    this.products.remove(key);
+  }
+  deleteEverything() {
+    this.products.remove();
   }
   //
   // getProduct(id: number): Promise<Product> {
