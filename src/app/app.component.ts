@@ -6,7 +6,7 @@ import {AppModalContentComponent} from './views/modal-component/modal.component'
    selector: 'app-root',
     moduleId: `${module.id}`,
     templateUrl: 'app.component.html',
-    styleUrls: ['app.component.css'],
+    styleUrls: ['app.component.scss'],
 })
 export class AppComponent {
   title = 'Super Spice Traders';

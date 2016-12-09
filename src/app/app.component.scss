@@ -1,0 +1,48 @@
+.topbar {
+  margin-bottom: 2rem;
+  margin-left: auto;
+  margin-right: auto;
+  padding: 2rem;
+  color: black;
+  text-align: center;
+  width: 100%;
+  a {
+    text-decoration: none;
+  }
+  .brand {
+    letter-spacing: .5rem;
+    font-weight: 300;
+    text-transform: uppercase;
+    margin-bottom: 1rem;
+  }
+  .nav-masthead {
+    font-weight: 400;
+    .nav-link {
+      margin: 0 .5rem 0 .5rem;
+      color: black;
+      &:hover {
+        font-weight: 700;
+      }
+      &.active {
+        text-decoration: underline;
+        border-bottom-color: black;
+      }
+    }
+  }
+}
+
+
+@media (min-width: 36rem) {
+  .topbar {
+    width: 36rem;
+    nav {
+      float: right;
+    }
+  }
+}
+
+@media (min-width: 62rem) {
+  .topbar {
+    width: 50rem;
+  }
+}

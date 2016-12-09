@@ -1,0 +1,19 @@
+.hero {
+  color: black;
+  width: 100%;
+  padding: 1rem;
+}
+
+@media (min-width: 36rem) {
+  .hero {
+    padding: 0;
+    margin: 10rem auto;
+    width: 36rem;
+  }
+}
+@media (min-width: 62rem) {
+  .hero {
+    margin: 10rem auto;
+    width: 50rem;
+  }
+}

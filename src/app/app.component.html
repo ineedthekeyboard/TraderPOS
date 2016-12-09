@@ -1,4 +1,24 @@
-<div class="title">{{title}}</div>
+
+<div class="container-fluid">
+  <div class="topbar">
+    <div class="row">
+      <div class="col-sm-2 col-xs-12">
+        <a routerLink="/landing">
+          <div class="brand">Muziris</div>
+        </a>
+      </div>
+      <div class="col-sm-10 col-xs-12">
+        <nav class="nav nav-masthead">
+          <a routerLink="/store" routerLinkActive="active" class="nav-link">Store</a>
+          <a routerLink="/order" routerLinkActive="active" class="nav-link">Order</a>
+          <a routerLink="/account" routerLinkActive="active" class="nav-link">Account</a>
+          <a routerLink="/login" routerLinkActive="active" class="nav-link">Login</a>
+          <a routerLink="/admin" routerLinkActive="active" class="nav-link">Admin</a>
+        </nav>
+      </div>
+    </div>
+  </div>
+</div>
 <router-outlet></router-outlet>
 <!--<button class="btn btn-lg btn-outline-primary" (click)="openModal()">Launch demo modal</button>
 <template appModalContainer></template>-->

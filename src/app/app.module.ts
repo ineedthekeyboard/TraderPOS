@@ -18,6 +18,12 @@ import { AppRoutingModule } from './app.router';
 import { ProductSearchComponent } from './views/product-search/product-search.component';
 import { OrderTableComponent } from './views/order-table/order-table.component';
 import { AngularFireModule, AuthProviders, AuthMethods } from 'angularfire2';
+import { LandingPageComponent } from './views/landing-page/landing-page.component';
+import { AccountPageComponent } from './views/account-page/account-page.component';
+import { LoginPageComponent } from './views/login-page/login-page.component';
+import { SignupPageComponent } from './views/signup-page/signup-page.component';
+import { StorePageComponent } from './views/store-page/store-page.component';
+import { AdminPageComponent } from './views/admin-page/admin-page.component';
 
 export const myFirebaseConfig = {
   apiKey: "AIzaSyAtYkq4VFsHKZBo_XmEUuU_hSF77_um6wk",
@@ -49,7 +55,14 @@ export const myFirebaseAuthConfig = {
     OrderPageComponent,
     AppModalContentComponent,
     ProductSearchComponent,
-    OrderTableComponent
+    OrderTableComponent,
+    LandingPageComponent,
+    AccountPageComponent,
+    LoginPageComponent,
+    SignupPageComponent,
+    StorePageComponent,
+    OrderPageComponent,
+    AdminPageComponent
   ],
   entryComponents: [AppModalContentComponent],
   providers: [ProductsService, OrdersService],
