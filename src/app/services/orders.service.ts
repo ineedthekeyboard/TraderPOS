@@ -11,7 +11,7 @@ export class OrdersService {
   constructor(private http: Http) {
   }
   create(order: Order): Promise<Order> {
-    order.id = this.createId();
+    order.Id = this.createId();
     return this.http
       .post(this.orderUrl, JSON.stringify(order), { headers: this.headers })
       .toPromise()
@@ -29,9 +29,7 @@ export class OrdersService {
     return this.get().then((orders) => orders.find((order) => order.orderId === id));
   }
   update(order: Order): Promise<Order> {
-    //todo check this logic below
-    //const url = `${this.getOrder}/${order.orderId}`;
-    const url = `${this.orderUrl}/${order.id}`;
+    const url = `${this.orderUrl}/${order.Id}`;
     return this.http
       .put(url, JSON.stringify(order), { headers: this.headers })
       .toPromise()
@@ -39,7 +37,7 @@ export class OrdersService {
   }
   deleteOrder(order: Order): Promise<Order> {
     debugger;
-    const url = `${this.orderUrl}/${order.id}`;
+    const url = `${this.orderUrl}/${order.Id}`;
     return this.http.delete(url, { headers: this.headers })
       .toPromise()
       .then(() => order)

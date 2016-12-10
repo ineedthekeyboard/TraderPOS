@@ -25,14 +25,14 @@ export class OrderPageComponent implements OnInit {
   }
 
   onOrder(): void {
+    debugger;
     for(let i=0; i < this.productsOrdered.length; i++) {
       this.ordersService.update(this.productsOrdered[i]);
     }
-    this.router.navigate(['ordersummary']);
+    this.router.navigate(['order']);
   }
 
   onProductSelected(product: Product) {
-    debugger;
     // TODO: Check that the product is not already added.
     product.number = 1; // Make only one added now
     let newOrder = new Order(product);
@@ -43,8 +43,8 @@ export class OrderPageComponent implements OnInit {
 
   deleteSelectProduct(order: Order) {
     this.ordersService.deleteOrder(order).then((order: Order)=>{
-      let id = order.id;
-      this.productsOrdered = this.productsOrdered.filter(order => order.id !== id);
+      let id = order.Id;
+      this.productsOrdered = this.productsOrdered.filter(order => order.Id !== id);
       debugger;
     });
 

@@ -5,12 +5,12 @@ export class Order extends Product {
   productId: number;
   constructor(product: Product) {
     super();
-    this.productId = product.id;
-    this.name = product.name;
-    this.price = product.price;
+    this.productId = product.Id;
+    this.Name = product.Name;
+    this.PricePerPound = product.PricePerPound;
     this.number = product.number;
     this.units = product.units;
-    this.id = '';
+    this.Id = '';
   }
 
 }

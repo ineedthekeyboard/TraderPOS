@@ -1,7 +1,13 @@
 export class Product {
-    id: any;
-    name: string;
-    price: number;
+
+    Id: any;
+    Name: string;
+    PricePerPound: number;
+    PricePerOz: number;
+    PricePerGram: number;
+    PricePerTbsp: number;
+    PricePerTsp: number;
     number: number;
     units: string;
+
 }

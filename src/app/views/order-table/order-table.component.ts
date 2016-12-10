@@ -25,7 +25,7 @@ export class OrderTableComponent implements OnInit {
   ngOnChanges(changes) {
     if (changes.products && changes.products.currentValue && changes.products.currentValue.length > 0) {
       for (let product of this.products) {
-        this.summary.totalCost += (product.price * product.number);
+        this.summary.totalCost += (product.PricePerPound * product.number);
         this.summary.totalCount += product.number;
       }
     }

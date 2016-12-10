@@ -37,7 +37,7 @@ export class ProductSearchComponent implements OnInit {
     let emittedValue: boolean = false;
     //get the values from the observable
     this.allProducts.subscribe((products) => {
-      let productsFiltered = products.filter(p => p.name.indexOf(this.searchTerm) > -1);
+      let productsFiltered = products.filter(p => p.Name.toLowerCase().includes(this.searchTerm));
       if (productsFiltered.length > 0 && !emittedValue) {
         emittedValue = true;
         this.productSelected.emit(productsFiltered[0]);
@@ -48,7 +48,7 @@ export class ProductSearchComponent implements OnInit {
   search(): void {
     let term = this.searchBoxValue;
     this.products = this.allProducts.debounceTime(300).map(products => {
-      return products.filter(p => p.name.indexOf(this.searchTerm) > -1)
+      return products.filter(p => p.Name.toLowerCase().includes(this.searchTerm));
     });
     this.searchTerm = term;
     if (this.searchTerm === '' || !this.searchTerm) {

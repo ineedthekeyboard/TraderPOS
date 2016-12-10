@@ -10,11 +10,11 @@
   </thead>
   <tbody>
     <tr *ngFor="let product of products" class="search-result">
-        <td class="name">{{product.name}}</td>
+        <td class="name">{{product.Name}}</td>
         <td class="number">
           <input title="number" type="number" min="0" max="10" [(ngModel)]="product.number" />
         </td>
-        <td class="price">{{product.price}}</td>
+        <td class="price">{{product.PricePerPound}}</td>
         <td class="units">{{product.units}}</td>
         <td class="del">
           <button type="button" class="btn btn-sm btn-danger deleteBtn" (click)="productDeletePressed(product)">Delete</button>
@@ -37,11 +37,11 @@
   </thead>
   <tbody>
     <tr *ngFor="let product of products" class="search-result">
-      <td class="name">{{product.name}}</td>
+      <td class="name">{{product.Name}}</td>
       <td class="number">{{product.number}}</td>
-      <td class="price">$ {{product.price}}</td>
+      <td class="price">$ {{product.PricePerPound}}</td>
       <td class="units">{{product.units}}</td>
-      <td class="total">$ {{product.number * product.price}}</td>
+      <td class="total">$ {{product.number * product.PricePerPound}}</td>
     </tr>
     <tr class="search-result totals">
       <td class="name">TOTALS:</td>
