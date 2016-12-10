@@ -17,7 +17,6 @@ const routes: Routes = [
   { path: 'account', component: AccountPageComponent },
   { path: 'order',  component: OrderPageComponent },
   { path: 'store', component: StorePageComponent },
-  { path: 'store#messages', component: StorePageComponent },
   { path: 'admin', component: AdminPageComponent }
 
 ];

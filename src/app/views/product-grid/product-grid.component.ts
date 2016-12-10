@@ -1,5 +1,6 @@
 import {Component, OnInit, Input, Output, EventEmitter} from '@angular/core';
 import {Product} from '../../models/product-model/product.model';
+import {Order} from '../../models/order-model/order.model';
 import {Observable} from "rxjs";
 
 @Component({
@@ -9,7 +10,10 @@ import {Observable} from "rxjs";
 })
 export class ProductGridComponent implements OnInit {
   @Input() productsToDisplay: Observable<Product[]>;
-  @Input() orderMode: Boolean;
+  @Input() ordersToDisplay: Observable<Order[]>;
+  @Input() storeMode: Boolean = false;
+  @Input() orderMode: Boolean = false;
+  @Input() summaryMode: Boolean = false;
   @Output() orderProduct: EventEmitter<Product> = new EventEmitter<Product>();
   @Output() deleteProduct: EventEmitter<Product> = new EventEmitter<Product>();
 

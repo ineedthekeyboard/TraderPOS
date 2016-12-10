@@ -1,4 +1,17 @@
-<h2>Order Page Works</h2>
+<div class="order-container">
+  <div class="row total-container">
+    <div class="col-xs-12">
+      <div class="title">Order Total</div>
+    </div>
+    <div class="col-xs-12">
+      <app-product-grid [summaryMode]=true></app-product-grid>
+    </div>
+  </div>
+  <div class="divider hidden-md-down"></div>
+  <div class="title">Order Breakdown</div>
+  <app-product-grid [orderMode]=true [ordersToDisplay]="ordersToDisplay"></app-product-grid>
+</div>
+
 <!--<div class="application container-fluid order-page">-->
   <!--<div class="pagetitle">-->
     <!--{{pagetitle}}-->

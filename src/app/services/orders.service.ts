@@ -2,6 +2,7 @@ import { Injectable } from '@angular/core';
 import { Headers, Http } from '@angular/http';
 import 'rxjs/add/operator/toPromise';
 import { Order } from '../models/order-model/order.model';
+import {Observable} from "rxjs";
 
 @Injectable()
 export class OrdersService {
@@ -18,16 +19,15 @@ export class OrdersService {
       .then(res => res.json().data)
       .catch(this.handleError);
   }
-  get(): Promise<Order[]> {
-    return this.http.get(this.orderUrl)
-      .toPromise()
-      .then(response => response.json().data as Order[])
-      .catch(this.handleError);
+  get(): Observable<Order[]> {
+    return this.http.get(this.orderUrl).map(response => {
+      return response.json().data
+    });
   }
-  getOrder(order: Order): Promise<Order> {
-    let id = order.orderId;
-    return this.get().then((orders) => orders.find((order) => order.orderId === id));
-  }
+  // getOrder(order: Order): Promise<Order> {
+  //   let id = order.orderId;
+  //   return this.get().then((orders) => orders.find((order) => order.orderId === id));
+  // }
   update(order: Order): Promise<Order> {
     const url = `${this.orderUrl}/${order.Id}`;
     return this.http

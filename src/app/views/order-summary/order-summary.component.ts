@@ -16,9 +16,9 @@ export class OrderSummaryComponent implements OnInit {
   }
 
   ngOnInit(): void {
-    this.ordersService.get().then((orders) => {
-      this.productsOrdered = orders;
-    });
+    // this.ordersService.get().then((orders) => {
+    //   this.productsOrdered = orders;
+    // });
   }
 
   goBack(): void {

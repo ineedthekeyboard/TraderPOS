@@ -7,6 +7,12 @@
 .store-view .table thead td {
   border-top:none;
 }
+.summary-view .no-more-tables.table td, .summary-view .no-more-tables.table .td {
+  border:none;
+}
+.summary-view .no-more-tables.table thead {
+  border-top:1px solid gray;
+}
 
 .store-view .table td, .table th {
   vertical-align: inherit;
@@ -17,25 +23,25 @@
     vertical-align: top;
   }
   /* Force table to not be like tables anymore */
-  #no-more-tables table,
-  #no-more-tables thead,
-  #no-more-tables tbody,
-  #no-more-tables th,
-  #no-more-tables td,
-  #no-more-tables tr {
+  .no-more-tables table,
+  .no-more-tables thead,
+  .no-more-tables tbody,
+  .no-more-tables th,
+  .no-more-tables td,
+  .no-more-tables tr {
     display: block;
   }
 
   /* Hide table headers (but not display: none;, for accessibility) */
-  #no-more-tables thead tr {
+  .no-more-tables thead tr {
     position: absolute;
     top: -9999px;
     left: -9999px;
   }
 
-  #no-more-tables tr { border: 1px solid #ccc; }
+  .no-more-tables tr { border: 1px solid #ccc; }
 
-  #no-more-tables td:not(.img-container) {
+  .no-more-tables td:not(.img-container) {
     /* Behave  like a "row" */
     border: none;
     border-bottom: 1px solid #eee;
@@ -45,7 +51,7 @@
     text-align:left;
   }
 
-  #no-more-tables td:before {
+  .no-more-tables td:before {
     /* Now like a table header */
     position: absolute;
     /* Top/left values mimic padding */
@@ -61,5 +67,5 @@
   /*
     Label the data
     */
-  #no-more-tables td:before { content: attr(data-title); }
+  .no-more-tables td:before { content: attr(data-title); }
 }
