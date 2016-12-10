@@ -1,0 +1,20 @@
+.search-container {
+  .title {
+    line-height: 2.15rem;
+    letter-spacing: .25rem;
+    font-weight: 300;
+    text-align: center;
+    margin-bottom: 1rem;
+    text-transform: uppercase;
+  }
+}
+@media (min-width: 36rem) {
+
+}
+
+@media (min-width: 62rem) {
+  .search-container {
+    width:43rem;
+    margin: 0 auto 1rem auto;
+  }
+}

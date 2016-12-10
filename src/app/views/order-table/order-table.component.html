@@ -3,7 +3,6 @@
     <tr>
       <td class="name">Name</td>
       <td class="number">Number</td>
-      <td class="price">Price</td>
       <td class="units">Units</td>
       <td class="del">Delete?</td>
     </tr>
@@ -14,8 +13,7 @@
         <td class="number">
           <input title="number" type="number" min="0" max="10" [(ngModel)]="product.number" />
         </td>
-        <td class="price">{{product.PricePerPound}}</td>
-        <td class="units">{{product.units}}</td>
+        <td class="units">Lbs</td>
         <td class="del">
           <button type="button" class="btn btn-sm btn-danger deleteBtn" (click)="productDeletePressed(product)">Delete</button>
         </td>
@@ -40,7 +38,7 @@
       <td class="name">{{product.Name}}</td>
       <td class="number">{{product.number}}</td>
       <td class="price">$ {{product.PricePerPound}}</td>
-      <td class="units">{{product.units}}</td>
+      <td class="units">LBS</td>
       <td class="total">$ {{product.number * product.PricePerPound}}</td>
     </tr>
     <tr class="search-result totals">

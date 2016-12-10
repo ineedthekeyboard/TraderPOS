@@ -8,7 +8,7 @@ import {Observable} from "rxjs";
 @Component({
   selector: 'app-product-search',
   templateUrl: 'product-search.component.html',
-  styleUrls: ['product-search.component.css']
+  styleUrls: ['product-search.component.scss']
 })
 export class ProductSearchComponent implements OnInit {
   products: Observable<Product[]> = Observable.from([]);

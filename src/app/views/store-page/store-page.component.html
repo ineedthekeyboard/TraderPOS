@@ -1,3 +1,13 @@
-<p>
-  store-page works!
-</p>
+<div class="store-container">
+  <div class="row search-container">
+    <div class="col-xs-12">
+      <div class="title">Spices & Products</div>
+    </div>
+    <div class="col-xs-12">
+      <app-product-search (productSelected)='onProductSelected($event)'></app-product-search>
+    </div>
+  </div>
+  <div class="row store-view">
+    <app-order-table [summaryMode]=false [products]='productsOrdered' (deleteProduct)='deleteSelectProduct($event)'></app-order-table>
+  </div>
+</div>
