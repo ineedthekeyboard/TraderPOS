@@ -29,7 +29,6 @@ export class OrderTableComponent implements OnInit {
         this.summary.totalCount += product.number;
       }
     }
-
   }
 
   productDeletePressed(product: Product) {

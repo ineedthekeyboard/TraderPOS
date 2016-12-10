@@ -33,16 +33,17 @@ export class ProductSearchComponent implements OnInit {
   }
 
   enterPressedAddProduct(): void {
-    //Only allow the first found product to be emitted.
-    let emittedValue: boolean = false;
-    //get the values from the observable
-    this.allProducts.subscribe((products) => {
-      let productsFiltered = products.filter(p => p.Name.toLowerCase().includes(this.searchTerm));
-      if (productsFiltered.length > 0 && !emittedValue) {
-        emittedValue = true;
-        this.productSelected.emit(productsFiltered[0]);
-      }
-    });
+    // //Only allow the first found product to be emitted.
+    // let emittedValue: boolean = false;
+    // //get the values from the observable
+    // this.allProducts.subscribe((products) => {
+    //   let productsFiltered = products.filter(p => p.Name.toLowerCase().includes(this.searchTerm));
+    //   if (productsFiltered.length > 0 && !emittedValue) {
+    //     emittedValue = true;
+    //     this.searchBoxValue = productsFiltered[0].Name;
+    //     this.productSelected.emit(productsFiltered[0]);
+    //   }
+    // });
   }
 
   search(): void {

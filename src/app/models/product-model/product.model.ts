@@ -9,5 +9,4 @@ export class Product {
     PricePerTsp: number;
     number: number;
     units: string;
-
 }
