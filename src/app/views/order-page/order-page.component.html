@@ -1,8 +1,9 @@
-<div class="application container-fluid order-page">
-  <div class="pagetitle">
-    {{pagetitle}}
-  </div>
-  <app-product-search (productSelected)='onProductSelected($event)'></app-product-search>
-  <button type="button" (click)="onOrder()" class="btn btn-default btn-lg btn-block order" [disabled]="!this.productsOrdered.length > 0">Order</button>
-  <app-order-table [summaryMode]=false [products]='productsOrdered' (deleteProduct)='deleteSelectProduct($event)'></app-order-table>
-</div>
+<h2>Order Page Works</h2>
+<!--<div class="application container-fluid order-page">-->
+  <!--<div class="pagetitle">-->
+    <!--{{pagetitle}}-->
+  <!--</div>-->
+  <!--<app-product-search (productSelected)='onProductSelected($event)'></app-product-search>-->
+  <!--<button type="button" (click)="onOrder()" class="btn btn-default btn-lg btn-block order" [disabled]="!this.productsOrdered.length > 0">Order</button>-->
+  <!--<app-order-table [summaryMode]=false [products]='productsOrdered' (deleteProduct)='deleteSelectProduct($event)'></app-order-table>-->
+<!--</div>-->

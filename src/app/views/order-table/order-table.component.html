@@ -1,52 +1,56 @@
-<table class="table table-striped table-hover" *ngIf="!summaryMode">
-  <thead>
+<div class="table-responive">
+  <table class="table table-striped table-hover" *ngIf="!summaryMode">
+    <thead>
     <tr>
       <td class="name">Name</td>
       <td class="number">Number</td>
       <td class="units">Units</td>
       <td class="del">Delete?</td>
     </tr>
-  </thead>
-  <tbody>
+    </thead>
+    <tbody>
     <tr *ngFor="let product of products" class="search-result">
-        <td class="name">{{product.Name}}</td>
-        <td class="number">
-          <input title="number" type="number" min="0" max="10" [(ngModel)]="product.number" />
-        </td>
-        <td class="units">Lbs</td>
-        <td class="del">
-          <button type="button" class="btn btn-sm btn-danger deleteBtn" (click)="productDeletePressed(product)">Delete</button>
-        </td>
+      <td class="name">{{product.Name}}</td>
+      <td class="number">
+        <input title="number" type="number" min="0" max="10" [(ngModel)]="product.number"/>
+      </td>
+      <td class="units">Lbs</td>
+      <td class="del">
+        <button type="button" class="btn btn-sm btn-danger deleteBtn" (click)="productDeletePressed(product)">Delete
+        </button>
+      </td>
     </tr>
 
-  </tbody>
-</table>
+    </tbody>
+  </table>
+</div>
+
 
 <!--Summary Table-->
 <table class="table table-striped table-hover" *ngIf="summaryMode">
   <thead>
-    <tr>
-      <td class="name">Name</td>
-      <td class="number">Number</td>
-      <td class="price">Price Per Unit</td>
-      <td class="units">Units</td>
-      <td class="total">Total Price</td>
-    </tr>
+  <tr>
+    <td class="name">Name</td>
+    <td class="number">Number</td>
+    <td class="price">Price Per Unit</td>
+    <td class="units">Units</td>
+    <td class="total">Total Price</td>
+  </tr>
   </thead>
   <tbody>
-    <tr *ngFor="let product of products" class="search-result">
-      <td class="name">{{product.Name}}</td>
-      <td class="number">{{product.number}}</td>
-      <td class="price">$ {{product.PricePerPound}}</td>
-      <td class="units">LBS</td>
-      <td class="total">$ {{product.number * product.PricePerPound}}</td>
-    </tr>
-    <tr class="search-result totals">
-      <td class="name">TOTALS:</td>
-      <td class="number">{{summary.totalCount}}</td>
-      <td class="price"> - </td>
-      <td class="units"> - </td>
-      <td class="total">$ {{summary.totalCost}}</td>
-    </tr>
+  <tr *ngFor="let product of products" class="search-result">
+    <td class="name">{{product.Name}}</td>
+    <td class="number">{{product.number}}</td>
+    <td class="price">$ {{product.PricePerPound}}</td>
+    <td class="units">LBS</td>
+    <td class="total">$ {{product.number * product.PricePerPound}}</td>
+  </tr>
+  <tr class="search-result totals">
+    <td class="name">TOTALS:</td>
+    <td class="number">{{summary.totalCount}}</td>
+    <td class="price"> -</td>
+    <td class="units"> -</td>
+    <td class="total">$ {{summary.totalCost}}</td>
+  </tr>
   </tbody>
 </table>
