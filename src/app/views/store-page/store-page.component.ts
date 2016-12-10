@@ -5,8 +5,6 @@ import {Router} from '@angular/router';
 import {ProductsService} from '../../services/products.service';
 import {OrdersService} from '../../services/orders.service';
 import {Product} from '../../models/product-model/product.model';
-import {Order} from '../../models/order-model/order.model';
-import {AngularFire, FirebaseListObservable} from 'angularfire2';
 import {Observable} from "rxjs";
 
 @Component({
@@ -47,6 +45,7 @@ export class StorePageComponent implements OnInit {
 
   @Input() productFilter: Observable<Product[]>;
 
+  allProducts: Observable<Product[]> = Observable.from([]);
   productsToDisplay: Observable<Product[]> = Observable.from([]);
 
   constructor(private router: Router,
@@ -55,33 +54,21 @@ export class StorePageComponent implements OnInit {
   }
 
   ngOnInit() {
+    this.allProducts = this.productsService.getProducts();
     this.productsToDisplay = this.productsService.getProducts();
   }
+  onSearch(searchTerm: string) {
+    if (searchTerm === '' || !searchTerm) {
+      this.productsToDisplay = this.allProducts;
+    } else {
+      this.productsToDisplay = this.allProducts.debounceTime(250).map(products => {
+        return products.filter(p => p.Name.toLowerCase().includes(searchTerm))
+      });
+    }
+  }
 
-  // onOrder(): void {
-  //   debugger;
-  //   for(let i=0; i < this.productsOrdered.length; i++) {
-  //     this.ordersService.update(this.productsOrdered[i]);
-  //   }
-  //   this.router.navigate(['order']);
-  // }
-
-  // onProductSelected(product: Product) {
-  //   // TODO: Check that the product is not already added.
-  //   product.number = 1; // Make only one added now
-  //   let newOrder = new Order(product);
-  //   this.ordersService.create(newOrder).then((order) => {
-  //     this.productsOrdered.push(order);
-  //   });
-  // }
-  //
-  // deleteSelectProduct(order: Order) {
-  //   this.ordersService.deleteOrder(order).then((order: Order)=>{
-  //     let id = order.Id;
-  //     this.productsOrdered = this.productsOrdered.filter(order => order.Id !== id);
-  //     debugger;
-  //   });
-  //
-  //}
-
+  onOrder(product: Product): void {
+    console.log(product);
+    // this.router.navigate(['order']);
+  }
 }

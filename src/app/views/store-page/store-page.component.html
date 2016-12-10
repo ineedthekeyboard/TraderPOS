@@ -4,9 +4,9 @@
       <div class="title">Spices & Products</div>
     </div>
     <div class="col-xs-12">
-      <app-product-search (productSelected)='onProductSelected($event)'></app-product-search>
+      <app-product-search [allProducts]="allProducts" (searchedTerm)='onSearch($event)'></app-product-search>
     </div>
   </div>
   <div class="divider hidden-md-down"></div>
-  <app-product-grid [orderMode]=false [productsToDisplay]="productsToDisplay"></app-product-grid>
+  <app-product-grid [orderMode]=false [productsToDisplay]="productsToDisplay" (orderProduct)="onOrder($event)"></app-product-grid>
 </div>
