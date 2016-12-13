@@ -1,3 +1,30 @@
-<p>
-  login-page works!
-</p>
+<div class="container" *ngIf="loginMode">
+  <form class="form rounded">
+    <h2 class="form-signin-heading">Sign In</h2>
+    <label for="inputEmail1" class="sr-only">Email</label>
+    <input type="email" id="inputEmail1" class="form-control" placeholder="Email" required="" autofocus="">
+    <label for="inputPassword" class="sr-only">Password</label>
+    <input type="password" id="inputPassword" class="form-control" placeholder="Password" required="">
+    <br>
+    <button class="btn btn-lg btn-secondary btn-block signupBtn" type="submit">Sign in</button>
+    <br>
+    <label style="text-decoration:underline;">Not a memeber?</label>
+    <button class="btn btn-lg btn-secondary btn-block signinBtn" (click)="loginMode=false">Sign up</button>
+  </form>
+</div>
+<div class="container" *ngIf="!loginMode">
+  <form class="form rounded">
+    <h2 class="form-signin-heading">Sign up</h2>
+    <label for="inputEmail2" class="sr-only">Email</label>
+    <input type="email" id="inputEmail2" class="form-control" placeholder="Email" required="" autofocus="">
+    <label for="inputPassword" class="sr-only">Password</label>
+    <input type="password" id="inputPassword2" class="form-control" placeholder="Password" required="">
+    <label for="inputPasswordConfirm2" class="sr-only">Confirm Password</label>
+    <input type="password" id="inputPasswordConfirm2" class="form-control" placeholder="Confirm Password" required="">
+    <br>
+    <button class="btn btn-lg btn-secondary btn-block signupBtn" type="submit">Sign up</button>
+    <br>
+    <label style="text-decoration:underline;">Already a memeber?</label>
+    <button class="btn btn-lg btn-secondary btn-block signinBtn" (click)="loginMode = true">Sign in</button>
+  </form>
+</div>

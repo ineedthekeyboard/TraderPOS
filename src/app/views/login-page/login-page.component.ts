@@ -6,7 +6,7 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['login-page.component.scss']
 })
 export class LoginPageComponent implements OnInit {
-
+  loginMode: Boolean = true;
   constructor() { }
 
   ngOnInit() {

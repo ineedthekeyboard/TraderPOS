@@ -1,0 +1,38 @@
+.container-fluid {
+  //background-color: #113838;
+  overflow: auto;
+  color: white;
+  .card {
+    width: 100%;
+    background-color: #316f6f;
+    padding: 1rem;
+    //box-shadow: 0 1px 5px 0 rgba(0, 0, 0, 0.26);
+    //border-radius: 4px;
+    i.header {
+      font-size: 5rem;
+    }
+    .toolbar {
+      padding-top: 1rem;
+      i {
+        font-size: 2.4rem;
+        &.active {
+          color: #113838;
+        }
+        &:hover {
+          color: #051f1f;
+          cursor: pointer;
+          cursor: hand;
+        }
+      }
+    }
+  }
+  .details {
+    .hero {
+      text-align: center;
+      padding-bottom: 1rem;
+    }
+    .details-content .row {
+      margin-bottom: 1rem;
+    }
+  }
+}

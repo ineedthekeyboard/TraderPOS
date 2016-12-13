@@ -1,0 +1,35 @@
+
+.container {
+  vertical-align: top;
+  text-align: center;
+  color:white;
+  &.blur {
+    -webkit-filter: blur(3px);
+    filter: blur(3px);
+  }
+  .form {
+    width: 100%;
+    padding: 15px;
+    margin: auto;
+    background-color: #316f6f;
+    //background: rgba(0, 0, 0, .05);
+    label {
+      font-weight: 400;
+    }
+    input {
+      text-align: center;
+      margin: .5rem 0 0 0;
+    }
+  }
+}
+@media (min-width: 40rem) {
+  .container {
+    vertical-align: middle;
+    .form {
+      margin:1rem auto;
+      width: 30rem;
+    }
+  }
+}
+
+//}

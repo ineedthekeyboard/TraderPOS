@@ -48,6 +48,15 @@
     </tr>
     </thead>
     <tbody>
+    <tr>
+      <td data-title="Name">Order Summary:</td>
+      <td data-title="Number">23</td>
+      <td data-title="Units" class="numeric">102.00</td>
+      <td data-title="Units" class="numeric">102.00</td>
+      <td data-title="Delete" class="numeric">
+        <button type="button" class="btn btn-sm btn-primary">Complete Order</button>
+      </td>
+    </tr>
     <tr *ngFor="let order of ordersToDisplay | async">
       <td data-title="" class="img-container">
         <img class="img-fluid" alt="100%x250"

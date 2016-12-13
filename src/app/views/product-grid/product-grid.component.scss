@@ -1,23 +1,24 @@
-@media (min-width: 62rem) {
-  .store-view {
-    margin: 0 1rem 1rem 1rem;
-  }
-}
-
 .store-view .table thead td {
   border-top:none;
 }
-.summary-view .no-more-tables.table td, .summary-view .no-more-tables.table .td {
+.summary-view .no-more-tables.table thead td, .summary-view .no-more-tables.table td,
+.order-view .no-more-tables.table thead td {
   border:none;
-}
-.summary-view .no-more-tables.table thead {
-  border-top:1px solid gray;
 }
 
 .store-view .table td, .table th {
   vertical-align: inherit;
 }
-
+//@media only screen and (min-width: 40rem) {
+//  .summary-view .no-more-tables.table thead {
+//    border-top:1px solid gray;
+//  }
+//}
+@media (min-width: 62rem) {
+  .store-view {
+    margin: 0 1rem 1rem 1rem;
+  }
+}
 @media only screen and (max-width: 62rem) {
   .store-view .table td, .table th {
     vertical-align: top;

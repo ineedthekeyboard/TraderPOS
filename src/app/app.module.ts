@@ -21,7 +21,6 @@ import { AngularFireModule, AuthProviders, AuthMethods } from 'angularfire2';
 import { LandingPageComponent } from './views/landing-page/landing-page.component';
 import { AccountPageComponent } from './views/account-page/account-page.component';
 import { LoginPageComponent } from './views/login-page/login-page.component';
-import { SignupPageComponent } from './views/signup-page/signup-page.component';
 import { StorePageComponent } from './views/store-page/store-page.component';
 import { AdminPageComponent } from './views/admin-page/admin-page.component';
 import { ProductGridComponent } from './views/product-grid/product-grid.component';
@@ -60,7 +59,6 @@ export const myFirebaseAuthConfig = {
     LandingPageComponent,
     AccountPageComponent,
     LoginPageComponent,
-    SignupPageComponent,
     StorePageComponent,
     OrderPageComponent,
     AdminPageComponent,
