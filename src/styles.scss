@@ -29,6 +29,8 @@ $brand-warning:         #f0ad4e !default;
 $brand-danger:          #d9534f !default;
 
 .btn.btn-primary {
-  background-color:  darken(#316f6f, 6.5%);
+  background-color: lighten(#316f6f, 6.5%);
+  background-image: none;
+  //background-image: linear-gradient(to bottom,#316f6f 0,$brand-primary 100%);
 }
 

@@ -1,3 +1,67 @@
-<p>
-  admin-page works!
-</p>
+<div class="page admin">
+  <div class="page-wrapper container-fluid">
+    <div class="row">
+      <div class="col-xs-12 text-center hero"><h3>Admin Panel</h3></div>
+    </div>
+    <div class="content-container">
+      <!--<ul class="nav nav-tabs" role="tablist">-->
+      <!--<li class="nav-item">-->
+      <!--<a class="nav-link active" data-toggle="tab" role="tab">Dashboard</a>-->
+      <!--</li>-->
+      <!--<li class="nav-item">-->
+      <!--<a class="nav-link" data-toggle="tab" href="#profile" role="tab">Orders</a>-->
+      <!--</li>-->
+      <!--<li class="nav-item">-->
+      <!--<a class="nav-link" data-toggle="tab" href="#messages" role="tab">Products</a>-->
+      <!--</li>-->
+      <!--<li class="nav-item">-->
+      <!--<a class="nav-link" data-toggle="tab" href="#settings" role="tab">Debug</a>-->
+      <!--</li>-->
+      <!--</ul>-->
+
+      <!--&lt;!&ndash; Tab panes &ndash;&gt;-->
+      <!--<div class="tab-content">-->
+      <!--<div class="tab-pane active" id="home" role="tabpanel">...</div>-->
+      <!--<div class="tab-pane" id="profile" role="tabpanel">...</div>-->
+      <!--<div class="tab-pane" id="messages" role="tabpanel">...</div>-->
+      <!--<div class="tab-pane" id="settings" role="tabpanel">...</div>-->
+      <!--</div>-->
+
+      <ngb-tabset>
+        <ngb-tab id="test">
+          <template ngbTabTitle>
+            <span class="tabLink">Dashboard</span>
+          </template>
+          <template ngbTabContent>
+            <p>dashboard</p>
+          </template>
+        </ngb-tab>
+        <ngb-tab>
+          <template ngbTabTitle>
+            <span class="tabLink">Orders <b>0</b></span>
+          </template>
+          <template ngbTabContent>
+            <p>Orders to come</p>
+          </template>
+        </ngb-tab>
+        <ngb-tab [disabled]="true">
+          <template ngbTabTitle>
+            <span class="tabLink">Products <b>0</b></span>
+          </template>
+          <template ngbTabContent>
+            <p>Products to come</p>
+          </template>
+        </ngb-tab>
+        <ngb-tab>
+          <template ngbTabTitle>
+            <span class="tabLink">Debug</span>
+          </template>
+          <template ngbTabContent>
+            <p>debugger to come</p>
+          </template>
+        </ngb-tab>
+      </ngb-tabset>
+
+    </div>
+  </div>
+</div>
