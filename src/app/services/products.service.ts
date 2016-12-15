@@ -1,8 +1,8 @@
-import {Injectable} from '@angular/core';
-import {Headers, Http} from '@angular/http';
-import 'rxjs/add/operator/toPromise';
-import {Product} from '../models/product-model/product.model';
-import {AngularFire, FirebaseListObservable} from 'angularfire2';
+import {Injectable} from "@angular/core";
+import {Http} from "@angular/http";
+import "rxjs/add/operator/toPromise";
+import {Product} from "../models/product-model/product.model";
+import {AngularFire, FirebaseListObservable} from "angularfire2";
 
 @Injectable()
 export class ProductsService {
@@ -16,10 +16,10 @@ export class ProductsService {
   constructor(private http: Http,
               af: AngularFire) {
     this.products = af.database.list('/products');
-    this.products.subscribe((p)=>{
-      console.log("products now:");
-      console.log(p);
-    });
+    // this.products.subscribe((p)=>{
+    //   console.log("products now:");
+    //   console.log(p);
+    // });
   }
 
   getProducts(): FirebaseListObservable<Product[]> {
