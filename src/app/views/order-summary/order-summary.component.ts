@@ -1,7 +1,7 @@
-import {Component, OnInit} from '@angular/core';
-import {Order} from '../../models/order-model/order.model';
-import {OrdersService} from '../../services/orders.service';
-import {Router} from '@angular/router';
+import {Component, OnInit} from "@angular/core";
+import {Order} from "../../models/order.model";
+import {OrdersService} from "../../services/orders.service";
+import {Router} from "@angular/router";
 
 @Component({
   selector: 'app-order-summary',

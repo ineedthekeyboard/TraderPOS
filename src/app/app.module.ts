@@ -1,6 +1,6 @@
 import {NgbModule} from "@ng-bootstrap/ng-bootstrap";
 import {BrowserModule} from "@angular/platform-browser";
-import {NgModule} from "@angular/core";
+import {NgModule, enableProdMode} from "@angular/core";
 import {FormsModule} from "@angular/forms";
 import {HttpModule} from "@angular/http";
 // Imports for loading & configuring the in-memory web api
@@ -15,13 +15,14 @@ import {OrdersService} from "./services/orders.service";
 import {AppRoutingModule} from "./app.router";
 import {ProductSearchComponent} from "./views/product-search/product-search.component";
 import {OrderTableComponent} from "./views/order-table/order-table.component";
-import {AngularFireModule, AuthProviders, AuthMethods} from "angularfire2";
+import {AngularFireModule, AuthProviders, AuthMethods, AngularFire} from "angularfire2";
 import {LandingPageComponent} from "./views/landing-page/landing-page.component";
 import {AccountPageComponent} from "./views/account-page/account-page.component";
 import {LoginPageComponent} from "./views/login-page/login-page.component";
-import {StorePageComponent} from "./views/store-page/store-page.component";
+import {ProductsPageComponent} from "./views/products-page/products-page";
 import {AdminPageComponent} from "./views/admin-page/admin-page.component";
 import {ProductGridComponent} from "./views/product-grid/product-grid.component";
+import {CartPageComponent} from "./views/cart-page/cart-page.component";
 
 export const myFirebaseConfig = {
   apiKey: "AIzaSyAtYkq4VFsHKZBo_XmEUuU_hSF77_um6wk",
@@ -36,7 +37,7 @@ export const myFirebaseAuthConfig = {
   method: AuthMethods.Password
 };
 
-//enableProdMode();
+enableProdMode();
 
 @NgModule({
   imports: [
@@ -58,13 +59,26 @@ export const myFirebaseAuthConfig = {
     LandingPageComponent,
     AccountPageComponent,
     LoginPageComponent,
-    StorePageComponent,
+    ProductsPageComponent,
     OrderPageComponent,
     AdminPageComponent,
-    ProductGridComponent
+    ProductGridComponent,
+    CartPageComponent
   ],
   entryComponents: [AppModalContentComponent],
   providers: [ProductsService, OrdersService],
   bootstrap: [AppComponent]
 })
-export class AppModule { }
+export class AppModule {
+  constructor(public  af: AngularFire) {
+    this.af.auth.subscribe(auth => console.log(auth));
+  }
+
+  login() {
+    let email = "rlc120304@gmail.com";
+    let pass = "test1234";
+    this.af.auth.login({email: email, password: pass});
+    //this.af.auth.logout();
+
+  }
+}

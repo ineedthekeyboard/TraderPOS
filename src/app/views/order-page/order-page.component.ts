@@ -1,9 +1,7 @@
-import { Component, OnInit, Input, HostBinding,
-  trigger, transition, animate,
-  style, state } from '@angular/core';
-import {OrdersService} from '../../services/orders.service';
-import {Order} from '../../models/order-model/order.model';
-import {Observable} from 'rxjs';
+import {Component, OnInit, HostBinding, trigger, transition, animate, style, state} from "@angular/core";
+import {OrdersService} from "../../services/orders.service";
+import {Order} from "../../models/order.model";
+import {Observable} from "rxjs";
 
 @Component({
   selector: 'app-order-page',

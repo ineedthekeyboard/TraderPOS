@@ -1,16 +1,14 @@
-import { Component, OnInit, Input, HostBinding,
-  trigger, transition, animate,
-  style, state } from '@angular/core';
-import {Router} from '@angular/router';
-import {ProductsService} from '../../services/products.service';
-import {OrdersService} from '../../services/orders.service';
-import {Product} from '../../models/product-model/product.model';
+import {Component, OnInit, Input, HostBinding, trigger, transition, animate, style, state} from "@angular/core";
+import {Router} from "@angular/router";
+import {ProductsService} from "../../services/products.service";
+import {OrdersService} from "../../services/orders.service";
+import {Product} from "../../models/product.model";
 import {Observable} from "rxjs";
 
 @Component({
   selector: 'app-store-page',
-  templateUrl: './store-page.component.html',
-  styleUrls: ['./store-page.component.scss'],
+  templateUrl: 'products-page.html',
+  styleUrls: ['products-page.scss'],
   animations: [
     trigger('routeAnimation', [
       state('*',
@@ -35,7 +33,7 @@ import {Observable} from "rxjs";
     ])
   ]
 })
-export class StorePageComponent implements OnInit {
+export class ProductsPageComponent implements OnInit {
   @HostBinding('@routeAnimation') get routeAnimation() {
     return true;
   }

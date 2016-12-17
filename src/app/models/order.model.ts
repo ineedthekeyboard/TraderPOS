@@ -1,4 +1,4 @@
-import {Product} from '../product-model/product.model';
+import {Product} from "./product.model";
 
 export class Order extends Product {
   orderId: string;

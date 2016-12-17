@@ -9,11 +9,13 @@
       </div>
       <div class="col-sm-10 col-xs-12">
         <nav class="nav nav-masthead">
-          <a routerLink="/store" routerLinkActive="active" class="nav-link">Store</a>
+          <a routerLink="/cart" routerLinkActive="active" class="nav-link">Cart</a>
           <a routerLink="/order" routerLinkActive="active" class="nav-link">Order<span class="tag tag-primary">1</span></a>
-          <a routerLink="/account" routerLinkActive="active" class="nav-link">Account</a>
-          <a routerLink="/login" routerLinkActive="active" class="nav-link">Login</a>
-          <a routerLink="/admin" routerLinkActive="active" class="nav-link">Admin</a>
+          <a routerLink="/products" routerLinkActive="active" class="nav-link">Products</a>
+          <a routerLink="/account" *ngIf="(authorized)" routerLinkActive="active" class="nav-link">Account</a>
+          <a *ngIf="(authorized)" class="nav-link" (click)="logout()">Logout</a>
+          <a routerLink="/login" *ngIf="!(authorized)" routerLinkActive="active" class="nav-link">Login</a>
+          <!--<a routerLink="/admin" routerLinkActive="active" class="nav-link">Admin</a>-->
         </nav>
       </div>
     </div>

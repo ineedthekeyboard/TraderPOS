@@ -1,7 +1,7 @@
-import { Injectable } from '@angular/core';
-import { Headers, Http } from '@angular/http';
-import 'rxjs/add/operator/toPromise';
-import { Order } from '../models/order-model/order.model';
+import {Injectable} from "@angular/core";
+import {Headers, Http} from "@angular/http";
+import "rxjs/add/operator/toPromise";
+import {Order} from "../models/order.model";
 import {Observable} from "rxjs";
 
 @Injectable()

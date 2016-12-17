@@ -1,7 +1,7 @@
 import {Injectable} from "@angular/core";
 import {Http} from "@angular/http";
 import "rxjs/add/operator/toPromise";
-import {Product} from "../models/product-model/product.model";
+import {Product} from "../models/product.model";
 import {AngularFire, FirebaseListObservable} from "angularfire2";
 
 @Injectable()

@@ -1,30 +1,47 @@
 <div class="container" *ngIf="loginMode">
-  <form class="form rounded">
+  <form class="form rounded" (ngSubmit)="onSubmit()" #loginForm="ngForm">
     <h2 class="form-signin-heading">Sign In</h2>
-    <label for="inputEmail1" class="sr-only">Email</label>
-    <input type="email" id="inputEmail1" class="form-control" placeholder="Email" required="" autofocus="">
-    <label for="inputPassword" class="sr-only">Password</label>
-    <input type="password" id="inputPassword" class="form-control" placeholder="Password" required="">
-    <br>
-    <button class="btn btn-lg btn-secondary btn-block signupBtn" type="submit">Sign in</button>
+    <div class="form-group">
+      <label for="loginEmail" class="sr-only">Email</label>
+      <input type="email" [(ngModel)]="currentUser.email" name="loginEmail" id="loginEmail" class="form-control"
+             placeholder="Email" required="" autofocus="">
+      <label for="loginPassword" class="sr-only">Password</label>
+      <input type="password" [(ngModel)]="currentUser.password" name="loginPassword" id="loginPassword"
+             class="form-control" placeholder="Password" required="">
+    </div>
+    <button class="btn btn-lg btn-secondary btn-block signupBtn" type="submit" [disabled]="!loginForm.form.valid"
+            (click)="login(); loginForm.reset()">Sign in
+    </button>
     <br>
     <label style="text-decoration:underline;">Not a memeber?</label>
-    <button class="btn btn-lg btn-secondary btn-block signinBtn" (click)="loginMode=false">Sign up</button>
+    <button class="btn btn-sm btn-secondary btn-block signinBtn" (click)="loginMode=false">Sign up</button>
   </form>
 </div>
 <div class="container" *ngIf="!loginMode">
-  <form class="form rounded">
+  <form class="form rounded" (ngSubmit)="onSubmit()" #signupForm="ngForm">
     <h2 class="form-signin-heading">Sign up</h2>
-    <label for="inputEmail2" class="sr-only">Email</label>
-    <input type="email" id="inputEmail2" class="form-control" placeholder="Email" required="" autofocus="">
-    <label for="inputPassword" class="sr-only">Password</label>
-    <input type="password" id="inputPassword2" class="form-control" placeholder="Password" required="">
-    <label for="inputPasswordConfirm2" class="sr-only">Confirm Password</label>
-    <input type="password" id="inputPasswordConfirm2" class="form-control" placeholder="Confirm Password" required="">
-    <br>
-    <button class="btn btn-lg btn-secondary btn-block signupBtn" type="submit">Sign up</button>
+    <div class="form-group">
+      <label for="signupEmail" class="sr-only">Email</label>
+      <input type="email" name="signupEmail" [(ngModel)]="currentUser.email" id="signupEmail" class="form-control"
+             placeholder="Email" required="" autofocus="" #signupEmail="ngModel">
+      <div [hidden]="signupEmail.valid || signupEmail.pristine"
+           class="alert alert-danger">
+        Email is required.
+      </div>
+    </div>
+    <div class="form-group">
+      <label for="signupPass1" class="sr-only">Password</label>
+      <input type="password" [(ngModel)]="currentUser.password" name="signupPass1" id="signupPass1" class="form-control"
+             placeholder="Password" required="">
+      <label for="signupPass2" class="sr-only">Confirm Password</label>
+      <input type="password" [(ngModel)]="currentUser.passwordConfirm" name="signupPass2" id="signupPass2"
+             class="form-control" placeholder="Confirm Password" required="">
+    </div>
+    <button class="btn btn-lg btn-secondary btn-block signupBtn" type="submit" [disabled]="!signupForm.form.valid"
+            (click)="createAccount(); signupForm.reset()">Sign up
+    </button>
     <br>
     <label style="text-decoration:underline;">Already a memeber?</label>
-    <button class="btn btn-lg btn-secondary btn-block signinBtn" (click)="loginMode = true">Sign in</button>
+    <button class="btn btn-sm btn-secondary btn-block signinBtn" (click)="loginMode = true">Sign in</button>
   </form>
 </div>
