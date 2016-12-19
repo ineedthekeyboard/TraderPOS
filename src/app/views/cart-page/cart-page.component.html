@@ -1,3 +1,23 @@
-<p>
-  cart-page works!
-</p>
+<div class="store-container">
+  <div class="row search-container">
+    <div class="col-xs-12">
+      <div class="title">Spices & Products</div>
+    </div>
+    <div class="col-xs-12">
+      <app-product-search [allProducts]="allProducts" (addItem)="onAddItem($event)"
+                          (searchedTerm)='onSearch($event)'></app-product-search>
+    </div>
+  </div>
+  <div class="row search-container">
+    <div class="resultsContainer">
+      <ul>
+        <li *ngFor="let product of productsToDisplay | async">
+          {{product.Name}}
+        </li>
+      </ul>
+    </div>
+  </div>
+  <div class="divider hidden-md-down"></div>
+  <app-product-grid [storeMode]=true [productsToDisplay]="ordersServiceObj"
+                    (orderProduct)="onOrder($event)"></app-product-grid>
+</div>

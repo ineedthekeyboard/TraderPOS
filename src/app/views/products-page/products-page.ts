@@ -60,7 +60,7 @@ export class ProductsPageComponent implements OnInit {
       this.productsToDisplay = this.allProducts;
     } else {
       this.productsToDisplay = this.allProducts.debounceTime(250).map(products => {
-        return products.filter(p => p.Name.toLowerCase().includes(searchTerm))
+        return products.filter(p => p.Name.toLowerCase().includes(searchTerm.toLowerCase()))
       });
     }
   }

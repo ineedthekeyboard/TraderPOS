@@ -11,13 +11,10 @@ export class OrdersService {
 
   constructor(private http: Http) {
   }
-  create(order: Order): Promise<Order> {
+
+  create(order: Order): Observable<Order> {
     order.Id = this.createId();
-    return this.http
-      .post(this.orderUrl, JSON.stringify(order), { headers: this.headers })
-      .toPromise()
-      .then(res => res.json().data)
-      .catch(this.handleError);
+    return this.http.post(this.orderUrl, JSON.stringify(order), {headers: this.headers}).map(res => res.json().data);
   }
   get(): Observable<Order[]> {
     return this.http.get(this.orderUrl).map(response => {

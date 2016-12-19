@@ -11,6 +11,7 @@ export class ProductSearchComponent implements OnInit {
   searchBoxValue: string = '';
   @Input() allProducts: Observable<Product[]>;
   @Output() searchedTerm: EventEmitter<String> = new EventEmitter<String>();
+  @Output() addItem: EventEmitter<String> = new EventEmitter<String>();
 
   constructor() {
   }
@@ -20,6 +21,10 @@ export class ProductSearchComponent implements OnInit {
 
   search(): void {
     this.searchedTerm.emit(this.searchBoxValue);
+  }
+
+  addProduct(): void {
+    this.addItem.emit(this.searchBoxValue);
   }
 
 }
