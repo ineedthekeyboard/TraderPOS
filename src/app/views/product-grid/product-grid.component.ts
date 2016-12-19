@@ -25,6 +25,15 @@ export class ProductGridComponent implements OnInit {
   constructor() { }
 
   ngOnInit() {
+    // if (this.ordersToDisplay && this.summaryMode) {
+    //   this.ordersToDisplay.takeLast(1).subscribe(results => {
+    //     debugger;
+    //     for (let i in results) {
+    //       results[i].number
+    //     }
+    //     console.log(results);
+    //   });
+    // }
   }
   // ngOnChanges(changes) {
   //   if (changes.products && changes.products.currentValue && changes.products.currentValue.length > 0) {

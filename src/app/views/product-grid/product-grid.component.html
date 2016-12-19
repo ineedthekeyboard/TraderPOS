@@ -4,9 +4,9 @@
     <tr>
       <td></td>
       <td class="numeric name">Name</td>
-      <td class="numeric number">Number</td>
+      <td class="numeric count">Count</td>
       <td class="numeric units">Units</td>
-      <td class="del">Order</td>
+      <td class="del">Remove</td>
     </tr>
     </thead>
     <tbody>
@@ -17,7 +17,7 @@
              data-holder-rendered="true" style="height: 250px; width: 100%; display: block;">
       </td>
       <td data-title="Name">{{product.Name}}</td>
-      <td data-title="Number">
+      <td data-title="Count">
         <input title="number" type="number" step="0.1" min="0" max="100" value="1.0" [(ngModel)]="product.number"/>
       </td>
       <td data-title="Units" class="numeric">
@@ -29,7 +29,9 @@
         </select>
       </td>
       <td data-title="Delete" class="numeric">
-        <button type="button" class="btn btn-sm btn-primary orderBtn" (click)="productOrderPressed(product)">Order</button>
+        <button type="button" class="btn btn-sm btn-danger orderBtn" (click)="productOrderPressed(product)">Delete
+          Item
+        </button>
       </td>
     </tr>
     </tbody>
@@ -42,21 +44,12 @@
     <tr>
       <td></td>
       <td class="numeric name">Name</td>
-      <td class="numeric number">Number</td>
+      <td class="numeric count">Count</td>
       <td class="numeric units">Units</td>
       <td class="del">Remove</td>
     </tr>
     </thead>
     <tbody>
-    <tr>
-      <td data-title="Name">Order Summary:</td>
-      <td data-title="Number">23</td>
-      <td data-title="Units" class="numeric">102.00</td>
-      <td data-title="Units" class="numeric">102.00</td>
-      <td data-title="Delete" class="numeric">
-        <button type="button" class="btn btn-sm btn-primary">Delete</button>
-      </td>
-    </tr>
     <tr *ngFor="let order of ordersToDisplay | async">
       <td data-title="" class="img-container">
         <img class="img-fluid" alt="100%x250"
@@ -64,7 +57,7 @@
              data-holder-rendered="true" style="height: 250px; width: 100%; display: block;">
       </td>
       <td data-title="Name">{{order.Name}}</td>
-      <td data-title="Number">{{order.number}}</td>
+      <td data-title="Count">{{order.number}}</td>
       <td data-title="Units" class="numeric">{{order.units}}</td>
       <td data-title="Delete" class="numeric">
         <button type="button" class="btn btn-sm btn-danger deleteBtn" (click)="productDeletePressed(order)">Delete</button>
@@ -80,16 +73,16 @@
     <tr>
       <td class="numeric name"></td>
       <td class="numeric number">Total Items</td>
-      <td class="numeric units">Total Cost</td>
+      <td class="numeric cost">Total Cost</td>
       <td class="del">Order</td>
     </tr>
     </thead>
     <tbody>
     <tr>
       <td data-title="Name">Order Summary:</td>
-      <td data-title="Number">23</td>
-      <td data-title="Units" class="numeric">102.00</td>
-      <td data-title="Delete" class="numeric">
+      <td data-title="Number">{{(ordersToDisplay | async)?.length}}</td>
+      <td data-title="Cost" class="numeric">{{(ordersToDisplay | async)?.length * 2}}</td>
+      <td data-title="Complete Order" class="numeric">
         <button type="button" class="btn btn-sm btn-primary">Complete Order</button>
       </td>
     </tr>

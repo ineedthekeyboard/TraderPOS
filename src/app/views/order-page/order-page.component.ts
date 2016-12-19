@@ -40,10 +40,13 @@ export class OrderPageComponent implements OnInit {
   }
 
   ordersToDisplay: Observable<Order[]> = Observable.from([]);
+  //ordersCount: number = 0;
 
   constructor(private ordersService: OrdersService) {
     this.ordersToDisplay = ordersService.get();
-    this.ordersToDisplay.subscribe(o=>console.log(o));
+    // this.ordersToDisplay.subscribe(order =>{
+    //   this.ordersCount = order.length | 0
+    // });
   }
 
   ngOnInit() {
