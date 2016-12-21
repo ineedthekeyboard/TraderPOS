@@ -78,9 +78,9 @@ export class OrderPageComponent implements OnInit {
       });
       this.ordersService.deleteOrder(productToRemove).subscribe(result => {
         this.ordersToDisplay = Observable.from(productsAfterRemoval).toArray();
-      });
-      this.ordersToDisplay.subscribe(order => {
-        this.calculatePrices(order);
+        this.ordersToDisplay.subscribe(order => {
+          this.calculatePrices(order);
+        });
       });
     });
   }
