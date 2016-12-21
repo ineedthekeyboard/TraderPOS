@@ -12,9 +12,9 @@
           <a routerLink="/cart" routerLinkActive="active" class="nav-link">Cart</a>
           <a routerLink="/order" routerLinkActive="active" class="nav-link">Order</a>
           <!--<a routerLink="/order" routerLinkActive="active" class="nav-link">Order<span class="tag tag-primary"></span></a>-->
-          <!--<a routerLink="/products" routerLinkActive="active" class="nav-link">Products</a>-->
+          <!--<a routerLink="/products" *ngIf="(authorized)" routerLinkActive="active" class="nav-link">Products</a>-->
           <a routerLink="/account" *ngIf="(authorized)" routerLinkActive="active" class="nav-link">Account</a>
-          <a *ngIf="(authorized)" class="nav-link" (click)="logout()">Logout</a>
+          <a class="nav-link" *ngIf="(authorized)" (click)="logout()">Logout</a>
           <a routerLink="/login" *ngIf="!(authorized)" routerLinkActive="active" class="nav-link">Login</a>
           <!--<a routerLink="/admin" routerLinkActive="active" class="nav-link">Admin</a>-->
         </nav>

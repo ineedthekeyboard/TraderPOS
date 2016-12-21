@@ -12,32 +12,26 @@ export class OrdersService {
   constructor(private http: Http) {
   }
 
-  create(order: Order): Observable<Order> {
+  create(order: Order) {
     order.Id = this.createId();
-    return this.http.post(this.orderUrl, JSON.stringify(order), {headers: this.headers}).map(res => res.json().data);
+    return this.http.post(this.orderUrl, JSON.stringify(order), {headers: this.headers})
+      .map(res => res.json().data);
   }
-  get(): Observable<Order[]> {
-    return this.http.get(this.orderUrl).map(response => {
-      return response.json().data
-    });
+
+  getOrders(): Observable<Order[]> {
+    return this.http.get(this.orderUrl).map(res => res.json().data);
   }
-  // getOrder(order: Order): Promise<Order> {
-  //   let id = order.orderId;
-  //   return this.get().then((orders) => orders.find((order) => order.orderId === id));
-  // }
-  update(order: Order): Promise<Order> {
-    const url = `${this.orderUrl}/${order.Id}`;
+
+  update(order: Order): Observable<Order> {
+    const url = `${this.orderUrl}/${order.id}`;
     return this.http
       .put(url, JSON.stringify(order), { headers: this.headers })
-      .toPromise()
-      .then(() => order).catch(this.handleError);
+      .catch(this.handleError);
   }
-  deleteOrder(order: Order): Promise<Order> {
-    debugger;
-    const url = `${this.orderUrl}/${order.Id}`;
+
+  deleteOrder(order: Order): Observable<Order> {
+    const url = `${this.orderUrl}/${order.id}`;
     return this.http.delete(url, { headers: this.headers })
-      .toPromise()
-      .then(() => order)
       .catch(this.handleError);
   }
   private createId(): string {

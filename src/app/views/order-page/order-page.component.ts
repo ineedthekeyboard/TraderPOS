@@ -40,16 +40,49 @@ export class OrderPageComponent implements OnInit {
   }
 
   ordersToDisplay: Observable<Order[]> = Observable.from([]);
-  //ordersCount: number = 0;
+  orderSummary: any = {
+    ordersCount: 0,
+    totalCost: 0
+  };
+
 
   constructor(private ordersService: OrdersService) {
-    this.ordersToDisplay = ordersService.get();
-    // this.ordersToDisplay.subscribe(order =>{
-    //   this.ordersCount = order.length | 0
-    // });
   }
 
   ngOnInit() {
+    this.ordersToDisplay = this.ordersService.getOrders();
+    this.ordersToDisplay.subscribe(order => {
+      this.calculatePrices(order);
+    });
+  }
+
+  calculatePrices(order: Order[]): void {
+    this.orderSummary.ordersCount = order.length || 0;
+    this.orderSummary.totalCost = 0;
+    for (let i in order) {
+      let unitPrice = order[i]['PricePer' + order[i]['units']];
+      let numberOfUnits = order[i]['number'];
+      this.orderSummary.totalCost += ((unitPrice * numberOfUnits) + 1.20) * 4;
+    }
+  }
+
+  deleteSpecificProduct(productToRemove: Order): void {
+    let productsAfterRemoval = [];
+    let currentProducts = [];
+    this.ordersToDisplay.subscribe(results => {
+      //todo remove this call back after subscribe.
+      //right now subscribe is working asyncrounously
+      currentProducts = results;
+      productsAfterRemoval = currentProducts.filter((obj) => {
+        return obj.Id !== productToRemove.Id;
+      });
+      this.ordersService.deleteOrder(productToRemove).subscribe(result => {
+        this.ordersToDisplay = Observable.from(productsAfterRemoval).toArray();
+      });
+      this.ordersToDisplay.subscribe(order => {
+        this.calculatePrices(order);
+      });
+    });
   }
 
 }

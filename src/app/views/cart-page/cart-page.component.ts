@@ -3,8 +3,9 @@ import {Router} from "@angular/router";
 import {ProductsService} from "../../services/products.service";
 import {OrdersService} from "../../services/orders.service";
 import {Product} from "../../models/product.model";
+import {Order} from "../../models/order.model";
 import {Observable} from "rxjs";
-import "rxjs/Rx";
+//import "rxjs/Rx";
 
 @Component({
   selector: 'app-cart-page',
@@ -48,7 +49,7 @@ export class CartPageComponent implements OnInit {
   allProducts: Observable<Product[]> = Observable.from([]);
   productsToDisplay: Observable<Product[]> = Observable.from([]);
   productsOnOrder: any = Observable.from([]).toArray();
-  ordersServiceObj: any = Observable.from([]);
+  //ordersServiceObj: any = Observable.from([]);
 
   constructor(private router: Router,
               private ordersService: OrdersService,
@@ -58,7 +59,7 @@ export class CartPageComponent implements OnInit {
   ngOnInit() {
     this.allProducts = this.productsService.getProducts();
 
-    this.ordersServiceObj = this.ordersService.get();
+    this.productsOnOrder = this.ordersService.getOrders();
   }
 
   onSearch(searchTerm: string) {
@@ -79,24 +80,33 @@ export class CartPageComponent implements OnInit {
       let productsAdded = [];
       this.allProducts.subscribe(results => productToAdd = results);
       productToAdd = productToAdd.filter(p => p.Name.toLowerCase().includes(searchTerm.toLowerCase())).slice(0, 1);
+      if (productToAdd.length < 1) {
+        return
+      }
       this.productsOnOrder.subscribe(results => productsAdded = results);
-      // console.log(productToAdd);
-      // console.log(productsAdded);
-      // console.log(productsAdded.concat(productToAdd));
-      // console.log(this.allProducts);
-      // console.log(this.productsOnOrder);
-      // debugger;
-      //to service
-      this.ordersService.create(productToAdd[0]);
-      this.ordersServiceObj = this.ordersService.get();
 
-      //to local observable
-      //this.productsOnOrder = Observable.from(productsAdded.concat(productToAdd)).toArray();
+      productToAdd[0].units = 'Tbsp';
+
+      this.ordersService.create(productToAdd[0]).subscribe(results => {
+        productsAdded.push(results);
+        this.productsOnOrder = Observable.from(productsAdded).toArray();
+      });
     }
   }
 
-  onOrder(product: Product): void {
-    console.log(product);
-    // this.router.navigate(['order']);
+  deleteSpecificProduct(productToRemove: Order): void {
+    let productsAfterRemoval = [];
+    let currentProducts = [];
+    this.productsOnOrder.subscribe(results => currentProducts = results);
+    productsAfterRemoval = currentProducts.filter((obj) => {
+      return obj.Id !== productToRemove.Id;
+    });
+    this.ordersService.deleteOrder(productToRemove).subscribe(result => {
+      this.productsOnOrder = Observable.from(productsAfterRemoval).toArray();
+    });
+  }
+
+  updateProductOnOrder(productOnOrder: Order) {
+    this.ordersService.update(productOnOrder);
   }
 }

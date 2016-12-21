@@ -4,12 +4,13 @@
       <div class="title">Order Total</div>
     </div>
     <div class="col-xs-12">
-      <app-product-grid [summaryMode]=true [ordersToDisplay]="ordersToDisplay"></app-product-grid>
+      <app-product-grid [summaryMode]=true [ordersToDisplay]="orderSummary"></app-product-grid>
     </div>
   </div>
   <div class="divider hidden-md-down"></div>
   <div class="title">Order Breakdown</div>
-  <app-product-grid [orderMode]=true [ordersToDisplay]="ordersToDisplay"></app-product-grid>
+  <app-product-grid [orderMode]=true [ordersToDisplay]="ordersToDisplay"
+                    (deleteProduct)="deleteSpecificProduct($event)"></app-product-grid>
 </div>
 
 <!--<div class="application container-fluid order-page">-->

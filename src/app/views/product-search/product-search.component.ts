@@ -25,6 +25,7 @@ export class ProductSearchComponent implements OnInit {
 
   addProduct(): void {
     this.addItem.emit(this.searchBoxValue);
+    this.searchBoxValue = '';
   }
 
 }

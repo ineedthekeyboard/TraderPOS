@@ -2,6 +2,7 @@ import {Product} from "./product.model";
 
 export class Order extends Product {
   orderId: string;
+  id: number;
   productId: number;
   constructor(product: Product) {
     super();

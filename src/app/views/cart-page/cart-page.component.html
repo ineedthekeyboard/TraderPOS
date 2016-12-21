@@ -18,6 +18,7 @@
     </div>
   </div>
   <div class="divider hidden-md-down"></div>
-  <app-product-grid [storeMode]=true [productsToDisplay]="ordersServiceObj"
-                    (orderProduct)="onOrder($event)"></app-product-grid>
+  <app-product-grid [storeMode]=true [productsToDisplay]="productsOnOrder"
+                    (updateProduct)="updateProductOnOrder($event)"
+                    (deleteProduct)="deleteSpecificProduct($event)"></app-product-grid>
 </div>

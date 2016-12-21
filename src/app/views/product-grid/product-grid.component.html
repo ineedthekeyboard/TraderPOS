@@ -18,18 +18,21 @@
       </td>
       <td data-title="Name">{{product.Name}}</td>
       <td data-title="Count">
-        <input title="number" type="number" step="0.1" min="0" max="100" value="1.0" [(ngModel)]="product.number"/>
+        <input title="number" type="number" step="0.1" min="0" max="100" value="1.0"
+               (ngModelChange)="orderUpdated($event,product)" [(ngModel)]="product.number"/>
       </td>
       <td data-title="Units" class="numeric">
-        <select class="unit-selection rounded" [(ngModel)]="product.units">
-          <option value="lbs">LBS</option>
-          <option value="oz">Ounces</option>
-          <option value="tbsp">Tablespoon</option>
-          <option value="tsp">Teaspoon</option>
+        <select class="unit-selection rounded" (ngModelChange)="orderUpdated($event,product)"
+                [(ngModel)]="product.units">
+          <option value="Pound">LBS</option>
+          <option value="Gram">Grams</option>
+          <option value="Oz">Ounces</option>
+          <option value="Tbsp">Tablespoon</option>
+          <option value="Tsp">Teaspoon</option>
         </select>
       </td>
       <td data-title="Delete" class="numeric">
-        <button type="button" class="btn btn-sm btn-danger orderBtn" (click)="productOrderPressed(product)">Delete
+        <button type="button" class="btn btn-sm btn-danger orderBtn" (click)="productDeletePressed(product)">Delete
           Item
         </button>
       </td>
@@ -80,10 +83,10 @@
     <tbody>
     <tr>
       <td data-title="Name">Order Summary:</td>
-      <td data-title="Number">{{(ordersToDisplay | async)?.length}}</td>
-      <td data-title="Cost" class="numeric">{{(ordersToDisplay | async)?.length * 2}}</td>
+      <td data-title="Number">{{ordersToDisplay.ordersCount}}</td>
+      <td data-title="Cost" class="numeric">{{ordersToDisplay.totalCost | currency:'USD':true:'2.2-2'}}</td>
       <td data-title="Complete Order" class="numeric">
-        <button type="button" class="btn btn-sm btn-primary">Complete Order</button>
+        <button type="button" class="btn btn-sm btn-primary" (click)="productOrderPressed()">Complete Order</button>
       </td>
     </tr>
     </tbody>

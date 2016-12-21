@@ -1,7 +1,7 @@
 import {NgbModule} from "@ng-bootstrap/ng-bootstrap";
 import {BrowserModule} from "@angular/platform-browser";
-import {NgModule, enableProdMode} from "@angular/core";
-import {FormsModule} from "@angular/forms";
+import {NgModule} from "@angular/core";
+import {FormsModule, ReactiveFormsModule} from "@angular/forms";
 import {HttpModule} from "@angular/http";
 // Imports for loading & configuring the in-memory web api
 import {InMemoryWebApiModule} from "angular-in-memory-web-api";
@@ -37,13 +37,14 @@ export const myFirebaseAuthConfig = {
   method: AuthMethods.Password
 };
 
-enableProdMode();
+//enableProdMode();
 
 @NgModule({
   imports: [
     BrowserModule,
     AngularFireModule.initializeApp(myFirebaseConfig, myFirebaseAuthConfig),
     FormsModule,
+    ReactiveFormsModule,
     HttpModule,
     InMemoryWebApiModule.forRoot(InMemoryDataService),
     AppRoutingModule,
