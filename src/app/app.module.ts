@@ -8,13 +8,11 @@ import {InMemoryWebApiModule} from "angular-in-memory-web-api";
 import {InMemoryDataService} from "./local-data-services/in-memory-data.service";
 import {AppComponent} from "./app.component";
 import {OrderPageComponent} from "./views/order-page/order-page.component";
-import {OrderSummaryComponent} from "./views/order-summary/order-summary.component";
 import {AppModalContentComponent} from "./views/modal-component/modal.component";
 import {ProductsService} from "./services/products.service";
 import {OrdersService} from "./services/orders.service";
 import {AppRoutingModule} from "./app.router";
 import {ProductSearchComponent} from "./views/product-search/product-search.component";
-import {OrderTableComponent} from "./views/order-table/order-table.component";
 import {AngularFireModule, AuthProviders, AuthMethods, AngularFire} from "angularfire2";
 import {LandingPageComponent} from "./views/landing-page/landing-page.component";
 import {AccountPageComponent} from "./views/account-page/account-page.component";
@@ -52,11 +50,9 @@ export const myFirebaseAuthConfig = {
   ],
   declarations: [
     AppComponent,
-    OrderSummaryComponent,
     OrderPageComponent,
     AppModalContentComponent,
     ProductSearchComponent,
-    OrderTableComponent,
     LandingPageComponent,
     AccountPageComponent,
     LoginPageComponent,

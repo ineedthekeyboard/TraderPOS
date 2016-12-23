@@ -1,6 +1,4 @@
-import { Component, OnInit, HostBinding,
-  trigger, transition, animate,
-  style, state } from '@angular/core';
+import {Component, OnInit, HostBinding, trigger, transition, animate, style, state} from "@angular/core";
 
 
 @Component({
@@ -40,7 +38,8 @@ export class LandingPageComponent implements OnInit {
     return 'block';
   }
 
-  constructor() { }
+  constructor() {
+  }
 
   ngOnInit() {
   }
