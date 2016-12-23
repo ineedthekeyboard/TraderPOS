@@ -11,9 +11,10 @@ import {OrderPageComponent} from "./views/order-page/order-page.component";
 import {AppModalContentComponent} from "./views/modal-component/modal.component";
 import {ProductsService} from "./services/products.service";
 import {OrdersService} from "./services/orders.service";
+import {UserService} from "./services/user.service";
 import {AppRoutingModule} from "./app.router";
 import {ProductSearchComponent} from "./views/product-search/product-search.component";
-import {AngularFireModule, AuthProviders, AuthMethods, AngularFire} from "angularfire2";
+import {AngularFireModule, AuthProviders, AuthMethods} from "angularfire2";
 import {LandingPageComponent} from "./views/landing-page/landing-page.component";
 import {AccountPageComponent} from "./views/account-page/account-page.component";
 import {LoginPageComponent} from "./views/login-page/login-page.component";
@@ -63,19 +64,10 @@ export const myFirebaseAuthConfig = {
     CartPageComponent
   ],
   entryComponents: [AppModalContentComponent],
-  providers: [ProductsService, OrdersService],
+  providers: [ProductsService, OrdersService, UserService],
   bootstrap: [AppComponent]
 })
 export class AppModule {
-  constructor(public  af: AngularFire) {
-    this.af.auth.subscribe(auth => console.log(auth));
-  }
-
-  login() {
-    let email = "rlc120304@gmail.com";
-    let pass = "test1234";
-    this.af.auth.login({email: email, password: pass});
-    //this.af.auth.logout();
-
+  constructor() {
   }
 }

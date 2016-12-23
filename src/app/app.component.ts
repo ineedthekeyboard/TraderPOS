@@ -1,8 +1,7 @@
 import {Component} from "@angular/core";
 import {NgbModal} from "@ng-bootstrap/ng-bootstrap";
 import {AppModalContentComponent} from "./views/modal-component/modal.component";
-import {AngularFire} from "angularfire2";
-
+import {UserService} from "./services/user.service";
 @Component({
    selector: 'app-root',
     moduleId: `${module.id}`,
@@ -11,20 +10,15 @@ import {AngularFire} from "angularfire2";
 })
 export class AppComponent {
   title = 'Super Spice Traders';
-  authorized: any;
-  //ordersCount: number = 0;
+  authorized: any = false;
 
   constructor (private modalService: NgbModal,
-               public af: AngularFire) {
-    // private ordersService: OrdersService) {
-    this.af.auth.subscribe(auth => this.authorized = (auth && !!auth.uid));
-    // this.ordersService.get().subscribe(order =>{
-    //   this.ordersCount = order.length | 0
-    // });
+               public UserService: UserService) {
+    this.UserService.getUserSubject().subscribe(User => this.authorized = User.isAuthorized);
   }
 
   logout() {
-    this.af.auth.logout()
+    this.UserService.logoutUser();
   }
   openModal(): void {
       const modalRef = this.modalService.open(AppModalContentComponent);

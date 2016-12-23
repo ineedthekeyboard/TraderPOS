@@ -1,14 +1,12 @@
 export class User {
-  uid: string;
-  email: string;
-  password: string;
-  passwordConfirm: string;
+  uid: string = null;
+  email: string = null;
+  password: string = null;
+  passwordConfirm: string = null;
+  isAuthorized: boolean = false;
+  isAdmin: boolean = false;
 
   constructor() {
-    this.uid = null;
-    this.email = null;
-    this.password = null;
-    this.passwordConfirm = null;
   }
 
 }

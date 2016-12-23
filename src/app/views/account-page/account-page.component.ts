@@ -1,6 +1,7 @@
 import {Component, OnInit} from "@angular/core";
-import {AngularFire} from "angularfire2";
 import {User} from "../../models/user.model";
+import {Router} from "@angular/router";
+import {UserService} from "../../services/user.service";
 
 @Component({
   selector: 'app-account-page',
@@ -9,16 +10,18 @@ import {User} from "../../models/user.model";
 })
 export class AccountPageComponent implements OnInit {
   user: User = new User();
-  authState: any;
 
-  constructor(public af: AngularFire) {
+  constructor(public UserService: UserService,
+              private router: Router) {
   }
 
   ngOnInit() {
-    this.af.auth.subscribe((state: any) => {
-      this.authState = state;
-      this.user.email = state.auth.email;
-      this.user.uid = state.uid;
+    this.UserService.getUserSubject().subscribe((user: User) => {
+      if (User) {
+        this.user = user;
+      } else {
+        this.router.navigate(['login']);
+      }
     });
   }
 
